@@ -11,12 +11,15 @@ export const GithubProvider = ({ children }) => {
   //   const [loading, setLoading] = useState(true);
   const initialStates = {
     users: [],
-    loading: true,
+    loading: false,
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialStates);
 
+  // Get initial users (only for testing purposes for now)
   const fetchUsers = async () => {
+    setLoading();
+
     const response = await fetch(`${GITHUB_API}/users`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -32,6 +35,8 @@ export const GithubProvider = ({ children }) => {
       payload: data,
     });
   };
+
+  const setLoading = () => dispatch({type: 'SET_LOADING_TRUE'});
 
   return (
     <GithubContext.Provider
