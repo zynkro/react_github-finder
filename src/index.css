@@ -5,3 +5,9 @@
 * {
   color: white;
 }
+
+/* Fixing overlapping radius on a card from `User` component */
+.zynk-card-image .card.image-full:before {
+  border-radius: 0.5rem;
+  opacity: 0.4;
+}
