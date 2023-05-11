@@ -44,9 +44,9 @@ export function User() {
   return (
     <>
       <div className='w-full mx-auto'>
-        <div className='mb-4'>
+        <div className='mb-6'>
           <Link to='/' className='btn btn-accent'>
-            Back To Search
+            {`<<`} Back To Search
           </Link>
         </div>
 
@@ -133,7 +133,7 @@ export function User() {
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             <div className='stat bg-gray-800 border border-gray-700'>
               <div className='stat-figure text-secondary'>
-                <FaUsers className='text-3xl md:text-5xl' />
+                <FaUsers className='text-3xl md:text-5xl fill-lime-500' />
               </div>
               <div className='stat-title pr-5'>Followers</div>
               <div className='stat-value pr-5 text-3xl md:text-4xl'>
@@ -143,7 +143,7 @@ export function User() {
 
             <div className='stat bg-gray-800 border border-gray-700'>
               <div className='stat-figure text-secondary'>
-                <FaUserFriends className='text-3xl md:text-5xl' />
+                <FaUserFriends className='text-3xl md:text-5xl fill-lime-500' />
               </div>
               <div className='stat-title pr-5'>Following</div>
               <div className='stat-value pr-5 text-3xl md:text-4xl'>
@@ -153,7 +153,7 @@ export function User() {
 
             <div className='stat bg-gray-800 border border-gray-700'>
               <div className='stat-figure text-secondary'>
-                <FaCodepen className='text-3xl md:text-5xl' />
+                <FaCodepen className='text-3xl md:text-5xl fill-lime-500' />
               </div>
               <div className='stat-title pr-5'>Public Repos</div>
               <div className='stat-value pr-5 text-3xl md:text-4xl'>
@@ -163,7 +163,7 @@ export function User() {
 
             <div className='stat bg-gray-800 border border-gray-700'>
               <div className='stat-figure text-secondary'>
-                <FaStore className='text-3xl md:text-5xl' />
+                <FaStore className='text-3xl md:text-5xl fill-lime-500' />
               </div>
               <div className='stat-title pr-5'>Public Gists</div>
               <div className='stat-value pr-5 text-3xl md:text-4xl'>
