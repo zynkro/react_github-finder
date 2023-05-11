@@ -10,21 +10,42 @@ function RepoItem({ repo }) {
     open_issues,
     watchers_count,
     stargazers_count,
+    created_at,
+    pushed_at,
   } = repo;
 
+  const createdAtDate = new Date(created_at).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const pushedAtDate = new Date(pushed_at).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
-    <div className='mb-2 rounded-xl card bg-gray-700 hover:bg-gray-900 hover:cursor-pointer'>
+    <div className='mb-2 rounded-xl card bg-gray-700 hover:bg-gray-900 hover:cursor-pointer hover:transition-all'>
       <a
         href={html_url}
         target='_blank'
         rel='noopener noreferrer'
         className='card-body'
       >
-        <div className="flex items-center mb-2">
-          <FaLink className='mr-2' />
-          <h3 className='text-xl font-semibold'>
-            {name}
-          </h3>
+        <div className='flex items-center gap-4 mb-2'>
+          <FaLink />
+          <h3 className='text-xl font-semibold'>{name}</h3>
+        </div>
+
+        <div className='flex flex-wrap items-center gap-x-3 gap-y-1 mb-2'>
+          <div className='text-md mb-0 italic bg-gray-600 px-2 py-1 rounded'>
+            Created at <strong>{createdAtDate}</strong>
+          </div>
+          <div className='text-md italic bg-gray-600 px-2 py-1 rounded'>
+            Last updated <strong>{pushedAtDate}</strong>
+          </div>
         </div>
 
         {description && <p className='mb-3'>{description}</p>}

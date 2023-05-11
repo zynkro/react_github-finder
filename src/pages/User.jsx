@@ -15,9 +15,9 @@ export function User() {
   useEffect(() => {
     getUserProfile(params.login);
     getUserRepos(params.login);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Destructuring things I want to use from `user` state (data)
   const {
     name,
     type,
