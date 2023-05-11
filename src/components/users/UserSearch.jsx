@@ -14,8 +14,7 @@ function UserSearch() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (text === '') {
-      // alert('Please enter something');
+    if (text.trim() === '') {
       setAlert('Please enter something', 'error');
     } else {
       getSearchedUsers(text);
