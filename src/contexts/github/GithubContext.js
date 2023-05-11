@@ -4,13 +4,14 @@ import githubReducer from './GithubReducer';
 const GithubContext = createContext();
 
 const GITHUB_API = process.env.REACT_APP_GITHUB_API;
-// const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 export const GithubProvider = ({ children }) => {
   //   const [users, setUsers] = useState([]);
   //   const [loading, setLoading] = useState(true);
   const initialStates = {
     users: [],
+    user: {},
     loading: false,
   };
 
@@ -40,6 +41,29 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
+  // Get single user's profile information
+  const getUserProfile = async (login) => {
+    setLoading();
+
+    // const response = await fetch(`${GITHUB_API}/users/${login}`);
+    const response = await fetch(`${GITHUB_API}/users/${login}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    if (response.status === 404) {
+      window.location = '/notfound';
+    } else {
+      const data = await response.json();
+
+      dispatch({
+        type: 'GET_USER',
+        payload: data,
+      });
+    }
+  };
+
   // Clear users (e.g. when searched via `UserSearch` component)
   const clearUsers = () => {
     dispatch({
@@ -53,8 +77,10 @@ export const GithubProvider = ({ children }) => {
     <GithubContext.Provider
       value={{
         users: state.users,
+        user: state.user,
         loading: state.loading,
         getSearchedUsers,
+        getUserProfile,
         clearUsers,
       }}
     >
