@@ -8,7 +8,9 @@ export const AlertProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(alertReducer, initialState);
 
-  // Set up (or update) `alert` state used to display alerts
+  // This function sets up a temporary state `alert`, being an object with
+  // strings `message` and `type`; this state is then cleared up (set to
+  // null) after 3.5 seconds ...
   const setAlert = (message, type) => {
     dispatch({
       type: 'SET_ALERT',

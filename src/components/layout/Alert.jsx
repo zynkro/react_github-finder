@@ -10,8 +10,6 @@ import AlertContext from '../../contexts/alert/AlertContext';
 function Alert() {
   const { alert } = useContext(AlertContext);
 
-  //   console.log(alert.message);
-
   return (
     <div
       className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-4`}

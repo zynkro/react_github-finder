@@ -4,7 +4,7 @@ import githubReducer from './GithubReducer';
 const GithubContext = createContext();
 
 const GITHUB_API = process.env.REACT_APP_GITHUB_API;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+// const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 export const GithubProvider = ({ children }) => {
   //   const [users, setUsers] = useState([]);
@@ -24,11 +24,13 @@ export const GithubProvider = ({ children }) => {
       q: searchString,
     });
 
-    const response = await fetch(`${GITHUB_API}/search/users?${params}`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
-    });
+    // const response = await fetch(`${GITHUB_API}/search/users?${params}`, {
+    //   headers: {
+    //     Authorization: `token ${GITHUB_TOKEN}`,
+    //   },
+    // });
+
+    const response = await fetch(`${GITHUB_API}/search/users?${params}`);
 
     const { items } = await response.json();
 
