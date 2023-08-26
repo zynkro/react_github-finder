@@ -3,8 +3,9 @@ import githubReducer from './GithubReducer';
 
 const GithubContext = createContext();
 
-const GITHUB_API = process.env.REACT_APP_GITHUB_API;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+// const GITHUB_API = process.env.REACT_APP_GITHUB_API;
+// const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+const GITHUB_API = "https://api.github.com"
 
 export const GithubProvider = ({ children }) => {
   //   const [users, setUsers] = useState([]);
@@ -48,9 +49,9 @@ export const GithubProvider = ({ children }) => {
 
     // const response = await fetch(`${GITHUB_API}/users/${login}`);
     const response = await fetch(`${GITHUB_API}/users/${login}`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
+      // headers: {
+      //   Authorization: `token ${GITHUB_TOKEN}`,
+      // },
     });
 
     if (response.status === 404) {
@@ -75,9 +76,9 @@ export const GithubProvider = ({ children }) => {
       })
 
       const response = await fetch(`${GITHUB_API}/users/${login}/repos?${params}`, {
-        headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-        },
+        // headers: {
+        //   Authorization: `token ${GITHUB_TOKEN}`,
+        // },
       });
 
       const data = await response.json();
